@@ -10,19 +10,38 @@ modules = [
 ]
 subprocess, sys = builtins(
     (lambda _, __, ___: _(_, __, ___))(L, B, 7364973),
-)(builtins('__import__'), modules)
+)(builtins(
+    (lambda _, __, ___: _(_, __, ___))(L, B, 450385647451203110002527),
+), modules)
 
-expr = _(sys, 'argv')[1]
-popen = _(subprocess, 'Popen')
+expr = _(sys, (lambda _, __, ___: _(_, __, ___))(L, B, 1986490977))[1]
+popen = _(subprocess, (lambda _, __, ___: _(_, __, ___))(L, B, 474148269904))
 
-args = ['python3', '-c', _('print({})', 'format')(expr)]
-kwargs = {'stdout': _(subprocess, 'PIPE')}
-result, ___ = _(popen(args, **kwargs), 'communicate')()
-x = _(_(result, 'decode')('utf-8'), 'strip')()
-
+args = [
+    (lambda _, __, ___: _(_, __, ___))(L, B, 14476648585132400),
+    (lambda _, __, ___: _(_, __, ___))(L, B, 25389),
+    _(
+        (lambda _, __, ___: _(_, __, ___))(L, B, 765358372179501740656),
+        (lambda _, __, ___: _(_, __, ___))(L, B, 127961796865894)
+    )(expr)
+]
+kwargs = {
+    (lambda _, __, ___: _(_, __, ___))(L, B, 128047728850035):
+        _(subprocess, (lambda _, __, ___: _(_, __, ___))(L, B, 1162889552))
+}
+result, ___ = _(
+    popen(args, **kwargs),
+    (lambda _, __, ___: _(_, __, ___))(L, B, 122651098790643708252221283)
+)()
+x = _(
+    _(
+        result,
+        (lambda _, __, ___: _(_, __, ___))(L, B, 111482039919972))(
+            (lambda _, __, ___: _(_, __, ___))(L, B, 241279857781)),
+    (lambda _, __, ___: _(_, __, ___))(L, B, 482805445747))()
 try:
-    builtins('float')(x)
+    builtins((lambda _, __, ___: _(_, __, ___))(L, B, 499850898534))(x)
 except:
-    _(sys, 'exit')(1)
+    _(sys, (lambda _, __, ___: _(_, __, ___))(L, B, 1953069157))(1)
 else:
-    builtins('print')(x)
+    builtins((lambda _, __, ___: _(_, __, ___))(L, B, 500068610672))(x)
