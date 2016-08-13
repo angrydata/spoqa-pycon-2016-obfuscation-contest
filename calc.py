@@ -16,20 +16,17 @@ subprocess, sys = map(__import__, modules)
 _ = getattr
 
 
-def main(expr):
-    popen = _(subprocess, 'Popen')
+expr = _(sys, 'argv')[1]
+popen = _(subprocess, 'Popen')
 
-    args = ['python3', '-c', _('print({})', 'format')(expr)]
-    kwargs = {'stdout': _(subprocess, 'PIPE')}
-    p = popen(args, **kwargs)
-    result, __ = _(p, 'communicate')()
-    return _(_(result, 'decode')('utf-8'), 'strip')()
+args = ['python3', '-c', _('print({})', 'format')(expr)]
+kwargs = {'stdout': _(subprocess, 'PIPE')}
+result, __ = _(popen(args, **kwargs), 'communicate')()
+x = _(_(result, 'decode')('utf-8'), 'strip')()
 
-
-x = main(_(sys, 'argv')[1])
 try:
     float(x)
-except ValueError:
+except:
     _(sys, 'exit')(1)
 else:
     print(x)
