@@ -1,7 +1,5 @@
-import importlib
-
 modules = ['subprocess', 'sys']
-subprocess, sys = map(getattr(importlib, 'import_module'), modules)
+subprocess, sys = map(__import__, modules)
 
 
 def main(expr):
