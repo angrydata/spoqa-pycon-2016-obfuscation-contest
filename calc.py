@@ -13,20 +13,21 @@ modules = [
         7567731),
 ]
 subprocess, sys = map(__import__, modules)
+_ = getattr
 
 
 def main(expr):
-    popen = getattr(subprocess, 'Popen')
-    p = popen(['python3', '-c', getattr('print({})', 'format')(expr)],
-              stdout=getattr(subprocess, 'PIPE'))
-    result, _ = getattr(p, 'communicate')()
-    return getattr(getattr(result, 'decode')('utf-8'), 'strip')()
+    popen = _(subprocess, 'Popen')
+    p = popen(['python3', '-c', _('print({})', 'format')(expr)],
+              stdout=_(subprocess, 'PIPE'))
+    result, __ = _(p, 'communicate')()
+    return _(_(result, 'decode')('utf-8'), 'strip')()
 
 
-x = main(getattr(sys, 'argv')[1])
+x = main(_(sys, 'argv')[1])
 try:
     float(x)
 except ValueError:
-    getattr(sys, 'exit')(1)
+    _(sys, 'exit')(1)
 else:
     print(x)
