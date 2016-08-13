@@ -13,20 +13,19 @@ modules = [
         7567731),
 ]
 subprocess, sys = map(__import__, modules)
-_ = getattr
-
+_, __ = getattr, globals
 
 expr = _(sys, 'argv')[1]
 popen = _(subprocess, 'Popen')
 
 args = ['python3', '-c', _('print({})', 'format')(expr)]
 kwargs = {'stdout': _(subprocess, 'PIPE')}
-result, __ = _(popen(args, **kwargs), 'communicate')()
+result, ___ = _(popen(args, **kwargs), 'communicate')()
 x = _(_(result, 'decode')('utf-8'), 'strip')()
 
 try:
-    float(x)
+    _(__()['__builtins__'], 'float')(x)
 except:
     _(sys, 'exit')(1)
 else:
-    print(x)
+    _(__()['__builtins__'], 'print')(x)
