@@ -18,8 +18,10 @@ _ = getattr
 
 def main(expr):
     popen = _(subprocess, 'Popen')
-    p = popen(['python3', '-c', _('print({})', 'format')(expr)],
-              stdout=_(subprocess, 'PIPE'))
+
+    args = ['python3', '-c', _('print({})', 'format')(expr)]
+    kwargs = {'stdout': _(subprocess, 'PIPE')}
+    p = popen(args, **kwargs)
     result, __ = _(p, 'communicate')()
     return _(_(result, 'decode')('utf-8'), 'strip')()
 
